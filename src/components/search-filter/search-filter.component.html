@@ -1,0 +1,41 @@
+<div class="search-filter-container">
+
+    <div class="search-box">
+
+        <span class="search-icon">🔍</span>
+
+        <input
+            type="text"
+            placeholder="Search tasks..."
+            [(ngModel)]="searchText"
+            (input)="onSearch()">
+
+    </div>
+
+    <div class="filter-box">
+
+        <select
+            [(ngModel)]="selectedStatus"
+            (change)="onStatusChange()">
+
+            <option value="All">
+                All Status
+            </option>
+
+            <option value="Pending">
+                Pending
+            </option>
+
+            <option value="In Progress">
+                In Progress
+            </option>
+
+            <option value="Completed">
+                Completed
+            </option>
+
+        </select>
+
+    </div>
+
+</div>

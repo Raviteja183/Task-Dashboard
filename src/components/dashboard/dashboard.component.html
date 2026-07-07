@@ -1,0 +1,83 @@
+<div class="dashboard-container">
+
+    <app-header></app-header>
+
+    <div class="stats-section">
+
+        <app-stats
+            [total]="totalTasks"
+            [pending]="pendingTasks"
+            [inProgress]="inProgressTasks"
+            [completed]="completedTasks">
+        </app-stats>
+
+    </div>
+
+    <app-search-filter
+        (searchChanged)="onSearch($event)"
+        (statusChanged)="onStatusChange($event)">
+    </app-search-filter>
+
+    <div class="content">
+
+        <aside class="left-panel" id="formContainer">
+
+            <app-task-form
+                (taskAdded)="addTask($event)">
+            </app-task-form>
+
+        </aside>
+
+        <section class="right-panel" id="taskContainer">
+
+            <div class="task-header">
+
+                <h2>Your Tasks</h2>
+
+                <span class="task-count">
+
+                    {{ filteredTasks.length }} Showing
+
+                </span>
+
+            </div>
+
+            <div class="task-list-scroll">
+
+                <div
+                    class="task-grid"
+                    *ngIf="filteredTasks.length > 0">
+
+                    @for (task of filteredTasks; track task.id) {
+
+                        <app-task-card
+                            [task]="task">
+                        </app-task-card>
+
+                    }
+
+                </div>
+
+                <div
+                    class="empty-state"
+                    *ngIf="filteredTasks.length === 0">
+
+                    <img
+                        src="assets/empty.png"
+                        alt="No Tasks">
+
+                    <h3>No Tasks Found</h3>
+
+                    <p>
+                        No tasks match your search or selected status.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>

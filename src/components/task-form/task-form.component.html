@@ -1,0 +1,163 @@
+    <div class="task-form-container">
+
+        <div class="form-header">
+
+            <h2>
+        
+                {{ isEditMode ? 'Update Task' : 'Add Task' }}
+        
+            </h2>
+        
+            <p>
+        
+                {{ isEditMode
+                    ? 'Update the selected task'
+                    : 'Create a new task for your team' }}
+        
+            </p>
+        
+        </div>
+
+        <form
+            [formGroup]="taskForm"
+            (ngSubmit)="submitForm()">
+
+            <div class="form-group">
+
+                <label for="title">
+                    Task Title
+                </label>
+
+                <input
+                    id="title"
+                    type="text"
+                    placeholder="Enter task title"
+                    formControlName="title">
+
+                <small
+                    class="error"
+                    *ngIf="title?.touched && title?.errors?.['required']">
+
+                    Title is required.
+
+                </small>
+
+                <small
+                    class="error"
+                    *ngIf="title?.touched && title?.errors?.['minlength']">
+
+                    Minimum 3 characters required.
+
+                </small>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="status">
+                    Status
+                </label>
+
+                <select
+                    id="status"
+                    formControlName="status">
+
+                    <option value="Pending">
+                        Pending
+                    </option>
+
+                    <option value="In Progress">
+                        In Progress
+                    </option>
+
+                    <option value="Completed">
+                        Completed
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="priority">
+                    Priority
+                </label>
+
+                <select
+                    id="priority"
+                    formControlName="priority">
+
+                    <option value="High">
+                        High
+                    </option>
+
+                    <option value="Medium">
+                        Medium
+                    </option>
+
+                    <option value="Low">
+                        Low
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="assignee">
+                    Assignee
+                </label>
+
+                <input
+                    id="assignee"
+                    type="text"
+                    placeholder="Enter assignee name"
+                    formControlName="assignee">
+
+                <small
+                    class="error"
+                    *ngIf="assignee?.touched && assignee?.errors?.['required']">
+
+                    Assignee is required.
+
+                </small>
+
+            </div>
+
+            <div class="form-group">
+
+                <label for="dueDate">
+                    Due Date
+                </label>
+
+                <input
+                    id="dueDate"
+                    type="date"
+                    formControlName="dueDate">
+
+                <small
+                    class="error"
+                    *ngIf="dueDate?.touched && dueDate?.errors?.['required']">
+
+                    Due date is required.
+
+                </small>
+
+            </div>
+
+            <div class="button-group">
+
+                <button
+                    type="submit"
+                    class="save-btn">
+            
+                    {{ isEditMode ? 'Update Task' : 'Add Task' }}
+            
+                </button>
+            
+            </div>
+        </form>
+
+    </div>

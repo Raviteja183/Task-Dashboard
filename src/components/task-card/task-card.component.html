@@ -1,0 +1,78 @@
+<div
+    class="task-card"
+    [ngClass]="{
+        'high-card': task.priority === 'High',
+        'medium-card': task.priority === 'Medium',
+        'low-card': task.priority === 'Low'
+    }">
+
+    <div class="card-header">
+
+        <h3>{{ task.title }}</h3>
+
+        <span
+            class="status"
+            [ngClass]="{
+                pending: task.status === 'Pending',
+                progress: task.status === 'In Progress',
+                completed: task.status === 'Completed'
+            }">
+
+            {{ task.status }}
+
+        </span>
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="task-info">
+
+            <div class="info-row">
+
+                <i
+                    class="fas fa-flag"
+                    [ngClass]="{
+                        'priority-high': task.priority === 'High',
+                        'priority-medium': task.priority === 'Medium',
+                        'priority-low': task.priority === 'Low'
+                    }">
+                </i>
+
+                <span class="info-text">
+
+                    {{ task.priority }}
+
+                </span>
+
+            </div>
+
+            <div class="info-row">
+
+                <i class="fas fa-user user-icon"></i>
+
+                <span class="info-text">
+
+                    {{ task.assignee }}
+
+                </span>
+
+            </div>
+
+            <div class="info-row">
+
+                <i class="fas fa-calendar-days calendar-icon"></i>
+
+                <span class="info-text">
+
+                    {{ task.dueDate | date:'dd MMM, yyyy' }}
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
