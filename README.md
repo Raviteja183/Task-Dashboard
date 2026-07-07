@@ -83,7 +83,7 @@ src
 Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Raviteja183/Task-Dashboard.git
 ```
 
 Navigate to the project
